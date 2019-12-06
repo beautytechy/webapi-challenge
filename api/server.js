@@ -5,12 +5,12 @@ const server = express();
 server.use(express.json());
 
 const dbRouter = require('../data/dbRouter.js');
-server.use('/', dbRouter)
+server.use('/api', dbRouter)
 
 server.get('/', (req, res) => {
     db.get()
         .then(actions => {
-            console.log(actions);
+            // console.log(actions);
             res.status(200).json(actions);
         })
         .catch(err => {

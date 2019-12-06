@@ -2,8 +2,6 @@ const dbProject = require("../data/helpers/projectModel.js");
 const express = require("express");
 const router = express.Router();
 
-router.use(express.json());
-
 router.post("/", (req, res) => {
     const postData = req.body;
     dbProject.insert(postData)
@@ -17,6 +15,7 @@ router.post("/", (req, res) => {
             }
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json({ error: "There was an error while saving the post to the database" });
         });
 
